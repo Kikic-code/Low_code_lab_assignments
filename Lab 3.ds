@@ -1,0 +1,1800 @@
+/*
+ * Author       : keerthana.c.2024.cse_raja541
+ * Generated on : 10-Nov-2026 11:13:55
+ * Version      : 1.0
+ */
+ application "Hotel Room Booking Management System"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Los_Angeles"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form room_booking_form
+		{
+			displayname = "Room Booking Form"
+			success message = "Booking request submitted successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have guest_name
+			(
+    			type = name
+				displayname = "Guest Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			section_scheduling
+			(
+				type = section
+				displayname = "Scheduling & Policy Acknowledgement"
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			must have email_address
+			(
+    			type = email
+				displayname = "Email Address"
+				maxchar = 80
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			permanent_address
+			(
+    			type = address
+				displayname = "Permanent Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+     			) 
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			must have contact_number
+			(
+    			type = phonenumber
+				displayname = "Contact Number"
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			must have id_proof_number
+			(
+    			type = text
+				displayname = "ID Proof Number"
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			special_requests
+			(
+    			type = textarea
+				displayname = "Special Requests"
+				height = 13px
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			must have number_of_guests
+			(
+				type = number
+				displayname = "Number of Guests"
+				maxchar = 1
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			must have check_in_date
+			(
+    			type = date
+				displayname = "Check-In Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			preferred_checkin_time
+			(
+    			type = time
+				displayname = "Preferred Check-in Time"
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			must have room_type
+			(
+				type = picklist
+				displayname = "Room Type"
+				maxchar = 100
+				values = {"Deluxe Double Room","Standard Single Room","Suite","Twin Room"}
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			must have meal_plan
+			(
+				type = radiobuttons
+				displayname = "Meal Plan"
+				maxchar = 100
+				values = {"Room Only","Breakfast Included","All Meals Included"}
+				layout = 3
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			section_room_preferences
+			(
+				type = section
+				displayname = "Room & Stay Preferences"
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			amenities_required
+			(
+				type = checkboxes	
+				displayname = "Amenities Required"
+				values = {"Extra Bed","Airport Pickup","Late Checkout","High Floor","Non-Smoking"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			must have agree_to_policies
+			(
+    			type = checkbox
+				displayname = "Agree to Hotel Policies"
+				initial value = false
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			section_contact_details
+			(
+				type = section
+				displayname = "Contact Details"
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			Requires_Airport_Pickup
+			(
+    			type = checkbox
+				initial value = false
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Hotel_Policies_Display
+			(
+    			type = richtext
+				height = 200px
+				toolbar = enable
+				[
+					style, font-color, background-color, link, bullets-and-numbering, 
+					font-size : {1, 2, 3, 4, 5, 6, 7}
+				]
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Travel_Itinerary_URL
+			(
+    			type = url
+				enable  linkname
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Guest_Photo
+			(
+    			type = image
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Loyalty_Discount_Percent
+			(
+    			type = percentage
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Advance_Payment_Paid
+			(
+				type = INR
+				format = commadotindian
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Distance_From_Airport_KM
+			(
+				type = decimal
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Booking_Submitted_On
+			(
+    			type = datetime
+				timedisplayoptions = "hh:mm"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Additional_Guests_Details
+			(
+				type = grid
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 6
+	 			column = 0   
+				width = medium
+			)
+			Guest_Digital_Signature
+			(
+    			type = signature
+	 			row = 6
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Room_Type_Availability_Lookup
+			(
+				type = picklist	
+				values  = Room_inventory.ID
+    			displayformat = [Room_Type]
+				sortorder = ascending
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			ID_Proof_Upload
+			(
+    			type = upload file
+				browse = local_drive
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Special_Request_Voice_Note
+			(
+     			type = audio
+    			duration=60
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Celebration_Request_Video
+			(
+    			type = video
+    			duration=30
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Booking_ID
+			(
+    			type = autonumber
+				start index = 1
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			QR_Code
+			(
+				type = qrcode
+				displayname = "QR Code"
+				value = "${Booking_ID}"
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Total_Amount_Payable
+			(
+    			type = textarea
+				displayname = "Total Amount Payable"
+	 			row = 6
+	 			column = 1   
+				width = medium
+    			Formula_Properties
+    			(
+    						value =  Ifnull(input.Room_Type_Availability_Lookup.Room_Tariff,0) * Ifnull(input.number_of_guests,0) * (1 - Ifnull(input.Loyalty_Discount_Percent,0)) - Ifnull(input.Advance_Payment_Paid,0)
+    						visibility = false
+    						format = plaintext
+    			)
+			)
+			check_in_status
+			(
+				type = picklist
+				displayname = "Check-In Status"
+				maxchar = 100
+				values = {"Pending","Checked-In","Completed"}
+				initial value = "Pending"
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			check_out_status
+			(
+				type = picklist
+				displayname = "Check-Out Status"
+				maxchar = 100
+				values = {"Pending","Checked-Out"}
+				initial value = "Pending"
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			housekeeping_status
+			(
+				type = picklist
+				displayname = "Housekeeping Status"
+				maxchar = 100
+				values = {"Not Started","In Progress","Cleaned","Inspected"}
+				initial value = "Not Started"
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			booking_status
+			(
+				type = picklist
+				displayname = "Booking Status"
+				maxchar = 100
+				values = {"Enquiry","Confirmed","Checked-In","Checked-Out"}
+				initial value = "Enquiry"
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Room_inventory
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Room_Type
+			(
+    			type = text
+				displayname = "Room Type"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Room_Tariff
+			(
+				displayname = "Room _Tariff"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Availability_Status
+			(
+				type = picklist
+				displayname = "Availability Status"
+				maxchar = 100
+				values = {"Available","Not Available"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		list room_booking_report
+		{
+			displayName = "Room Booking Report"
+			show all rows from room_booking_form    
+			(
+				guest_name  as "Guest Name"
+	 			(
+	      			displayformat = [first_name+""+last_name]
+	 			)
+				id_proof_number as "ID Proof Number"
+				number_of_guests as "Number of Guests"
+				email_address as "Email Address"
+				contact_number as "Contact Number"
+				(
+					displayformat = formattednumber 
+				)
+				permanent_address  as "Permanent Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				room_type as "Room Type"
+				meal_plan as "Meal Plan"
+				amenities_required as "Amenities Required"
+				(
+					delimiter = comma
+				)
+				special_requests as "Special Requests"
+				check_in_date as "Check-In Date"
+				(
+					displayformat = fulldate
+				)
+				preferred_checkin_time as "Preferred Check-in Time"
+				agree_to_policies as "Agree to Hotel Policies"
+				(
+						displaytrue = "Yes"
+						displayfalse = "No"
+				)
+			)
+			filters
+			(
+				room_type
+				check_in_date
+				"Upcoming Bookings"  :  check_in_date >= today
+			)
+			sort by
+			(
+				check_in_date ascending
+			)
+		}
+		default list Room_inventory_Report
+		{
+			displayName = "Room_inventory Report"
+			show all rows from Room_inventory    
+			(
+				Room_Type as "Room Type"
+				Room_Tariff as "Room _Tariff"
+				Availability_Status as "Availability Status"
+			)
+		}
+		list All_Bookings_List
+		{
+			displayName = "All Bookings List"
+			show all rows from room_booking_form    
+			(
+				guest_name 
+				contact_number
+				(
+					displayformat = formattednumber 
+				)
+				room_type
+				check_in_date
+				(
+					displayformat = fulldate
+				)
+			)
+			sort by
+			(
+				check_in_date ascending
+			)
+		}
+		spreadsheet Bookings_Spreadsheet
+		{
+			displayName = "Bookings_Spreadsheet"
+			show all rows from room_booking_form    
+			(
+				guest_name 
+	 			(
+	      			displayformat = [first_name+""+last_name]
+	 			)
+				contact_number
+				(
+					displayformat = formattednumber 
+				)
+				room_type
+				check_in_date
+				(
+					displayformat = fulldate
+				)
+				check_in_status
+				check_out_status
+				housekeeping_status
+			)
+			group by
+			(
+				room_type ascending
+			)
+		}
+		kanban Booking_Status_Kanban
+		{
+			displayName = "Booking Status Kanban"
+			show all rows from room_booking_form    
+			(
+				booking_status as "Booking Status"
+				guest_name  as "Guest Name"
+	 			(
+	      			displayformat = [first_name+""+last_name]
+	 			)
+				room_type as "Room Type"
+			)
+			options
+			(
+	 			display field = booking_status
+				filter type  = manual
+				record count  = enable
+	 		)
+		}
+		calendar Checkin_Schedule_Calendar
+		{
+			displayName = "Checkin Schedule Calendar"
+			show all rows from room_booking_form    
+			(
+				guest_name  as "Guest Name"
+	 			(
+	      			displayformat = [first_name+""+last_name]
+	 			)
+				room_type as "Room Type"
+				check_in_date as "Check-In Date"
+				(
+					displayformat = fulldate
+				)
+				booking_status as "Booking Status"
+			)
+			options
+			(
+				display field = guest_name
+				start date = check_in_date
+			)
+		}
+		map Guest_Origin_Map
+		{
+			displayName = "Guest Origin Map"
+			show all rows from room_booking_form    
+			(
+				guest_name  as "Guest Name"
+				room_type as "Room Type"
+			)
+			options
+			(
+	 			display field = permanent_address
+		 		radius = 100 Kms
+	 		)
+		}
+		summary RoomType_By_MealPlan_Pivot
+		{
+			displayName = "RoomType By Meal Plan Pivot"
+			show all rows from room_booking_form    
+			(
+				room_type as "Room Type"
+				meal_plan as "Meal Plan"
+				Booking_ID
+				guest_name  as "Guest Name"
+				check_in_date as "Check-In Date"
+				booking_status as "Booking Status"
+			)
+			group by
+			(
+				room_type ascending
+				meal_plan ascending
+			)
+			options
+			(
+				display rows = 10
+				display records per row = 5
+			)
+		}
+		list Guest_Stay_Summary
+		{
+			displayName = "Guest_Stay_Summary"
+			show all rows from room_booking_form    
+			(
+				guest_name  as "Guest Name"
+				number_of_guests as "Number of Guests"
+				(
+					display = total	
+				)
+				check_in_date as "Check-In Date"
+				(
+					displayformat = fulldate
+				)
+				booking_status as "Booking Status"
+				contact_number as "Contact Number"
+				(
+					displayformat = formattednumber 
+				)
+				email_address as "Email Address"
+				room_type as "Room Type"
+				meal_plan as "Meal Plan"
+			)
+			group by
+			(
+				guest_name ascending
+			)
+			sort by
+			(
+				guest_name.first_name ascending
+			)
+		}
+		timeline Booking_Activity_Timeline
+		{
+			displayName = "Booking_Activity_Timeline"
+			show all rows from room_booking_form    
+			(
+				guest_name  as "Guest Name"
+				email_address as "Email Address"
+				permanent_address  as "Permanent Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				contact_number as "Contact Number"
+				(
+					displayformat = plainnumber 
+				)
+				id_proof_number as "ID Proof Number"
+				special_requests as "Special Requests"
+				number_of_guests as "Number of Guests"
+				check_in_date as "Check-In Date"
+				preferred_checkin_time as "Preferred Check-in Time"
+				room_type as "Room Type"
+				meal_plan as "Meal Plan"
+				amenities_required as "Amenities Required"
+				agree_to_policies as "Agree to Hotel Policies"
+				Requires_Airport_Pickup
+				Hotel_Policies_Display
+				Travel_Itinerary_URL
+				Guest_Photo
+				Loyalty_Discount_Percent
+				Advance_Payment_Paid
+				Distance_From_Airport_KM
+				Booking_Submitted_On
+				Guest_Digital_Signature
+				Room_Type_Availability_Lookup
+				ID_Proof_Upload
+				Special_Request_Voice_Note
+				Celebration_Request_Video
+				Booking_ID
+				QR_Code as "QR Code"
+				Total_Amount_Payable as "Total Amount Payable"
+				check_in_status as "Check-In Status"
+				check_out_status as "Check-Out Status"
+				housekeeping_status as "Housekeeping Status"
+				booking_status as "Booking Status"
+			)
+			options
+			(
+				display field = guest_name
+				start date = Booking_Submitted_On
+			)
+		}
+	}
+
+
+
+
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form room_booking_form
+			{
+				label placement = left
+			}
+			form Room_inventory
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report room_booking_report
+			{
+				quickview
+				(
+					layout
+					(
+						quick_view
+						(
+							fields
+							(
+								guest_name as "Guest Name"
+								room_type as "Room Type"
+								check_in_date as "Check-In Date"
+								number_of_guests as "Number of Guests"
+								contact_number as "Contact Number"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+							)
+						record
+						(
+							Edit   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						booking_details
+						(
+		     				title = "Booking Details"
+							fields
+							(
+								guest_name as "Guest Name"
+								id_proof_number as "ID Proof Number"
+								number_of_guests as "Number of Guests"
+								email_address as "Email Address"
+								contact_number as "Contact Number"
+								permanent_address as "Permanent Address"
+								room_type as "Room Type"
+								meal_plan as "Meal Plan"
+								amenities_required as "Amenities Required"
+								special_requests as "Special Requests"
+								check_in_date as "Check-In Date"
+								preferred_checkin_time as "Preferred Check-in Time"
+								agree_to_policies as "Agree to Hotel Policies"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						)
+				)
+			}
+			report Room_inventory_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Room_Type as "Room Type"
+								Room_Tariff as "Room _Tariff"
+								Availability_Status as "Availability Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Room_Type as "Room Type"
+								Room_Tariff as "Room _Tariff"
+								Availability_Status as "Availability Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Bookings_List
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								guest_name
+								contact_number
+								room_type
+								check_in_date
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						booking_details
+						(
+		     				title = "Booking Details"
+							fields
+							(
+								guest_name
+								contact_number
+								room_type
+								check_in_date
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Bookings_Spreadsheet
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -3
+						datablock1
+						(
+							layout type = -3
+							fields
+							(
+								guest_name
+								contact_number
+								room_type
+								check_in_date
+								check_in_status
+								check_out_status
+								housekeeping_status
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						record
+						(
+							Edit   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								guest_name
+								contact_number
+								room_type
+								check_in_date
+								check_in_status
+								check_out_status
+								housekeeping_status
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+							)
+						)
+				)
+			}
+			report Booking_Status_Kanban
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								guest_name as "Guest Name"
+								room_type as "Room Type"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						booking_details
+						(
+		     				title = "Booking Details"
+							fields
+							(
+								guest_name as "Guest Name"
+								room_type as "Room Type"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Checkin_Schedule_Calendar
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								guest_name as "Guest Name"
+								room_type as "Room Type"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						booking_details
+						(
+		     				title = "Booking Details"
+							fields
+							(
+								guest_name as "Guest Name"
+								room_type as "Room Type"
+								check_in_date as "Check-In Date"
+								booking_status as "Booking Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Guest_Origin_Map
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+		     				title = "Map Pins"
+							fields
+							(
+								guest_name as "Guest Name"
+								room_type as "Room Type"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+							)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						booking_details
+						(
+		     				title = "Booking Details"
+							fields
+							(
+								guest_name as "Guest Name"
+								room_type as "Room Type"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report RoomType_By_MealPlan_Pivot
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -2
+	     				recordsperrow = 5
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								room_type as "Room Type"
+								meal_plan as "Meal Plan"
+								Booking_ID
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						booking_details
+						(
+		     				title = "Booking Details"
+							fields
+							(
+								room_type as "Room Type"
+								meal_plan as "Meal Plan"
+								Booking_ID
+								guest_name as "Guest Name"
+								check_in_date as "Check-In Date"
+								booking_status as "Booking Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Guest_Stay_Summary
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								guest_name as "Guest Name"
+								number_of_guests as "Number of Guests"
+								check_in_date as "Check-In Date"
+								booking_status as "Booking Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						guest_stay_details
+						(
+		     				title = "Guest Stay Details"
+							fields
+							(
+								guest_name as "Guest Name"
+								number_of_guests as "Number of Guests"
+								check_in_date as "Check-In Date"
+								room_type as "Room Type"
+								meal_plan as "Meal Plan"
+								booking_status as "Booking Status"
+								contact_number as "Contact Number"
+								email_address as "Email Address"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Booking_Activity_Timeline
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								guest_name as "Guest Name"
+								permanent_address as "Permanent Address"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								guest_name as "Guest Name"
+								email_address as "Email Address"
+								permanent_address as "Permanent Address"
+								contact_number as "Contact Number"
+								id_proof_number as "ID Proof Number"
+								special_requests as "Special Requests"
+								number_of_guests as "Number of Guests"
+								check_in_date as "Check-In Date"
+								preferred_checkin_time as "Preferred Check-in Time"
+								room_type as "Room Type"
+								meal_plan as "Meal Plan"
+								amenities_required as "Amenities Required"
+								agree_to_policies as "Agree to Hotel Policies"
+								Requires_Airport_Pickup
+								Hotel_Policies_Display
+								Travel_Itinerary_URL
+								Guest_Photo
+								Loyalty_Discount_Percent
+								Advance_Payment_Paid
+								Distance_From_Airport_KM
+								Booking_Submitted_On
+								Guest_Digital_Signature
+								Room_Type_Availability_Lookup
+								ID_Proof_Upload
+								Special_Request_Voice_Note
+								Celebration_Request_Video
+								Booking_ID
+								QR_Code as "QR Code"
+								Total_Amount_Payable as "Total Amount Payable"
+								check_in_status as "Check-In Status"
+								check_out_status as "Check-Out Status"
+								housekeeping_status as "Housekeeping Status"
+								booking_status as "Booking Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section room_bookings_section
+				{
+					displayname = "Room Bookings"
+					icon = "tech-desktop"
+					form  room_booking_form
+					{
+						icon = "tech-desktop"
+					}
+					report room_booking_report
+					{
+						icon = "tech-desktop"
+					}
+					report All_Bookings_List
+					{
+						icon = "travel-world"
+					}
+					report Bookings_Spreadsheet
+					{
+						icon = "furniture-table"
+					}
+					report Guest_Origin_Map
+					{
+						icon = "location-pin-copy"
+					}
+					report Booking_Activity_Timeline
+					{
+						icon = "furniture-table"
+					}
+				}
+				section Room_inventory
+				{
+					displayname = "Room_inventory"
+					icon = "tech-desktop"
+					form  Room_inventory
+					{
+						icon = "tech-desktop"
+					}
+					report Room_inventory_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section booking_status_kanban_section
+				{
+					displayname = "Booking Status Kanban"
+					icon = "tech-desktop"
+					report Booking_Status_Kanban
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section checkin_schedule_calendar_section
+				{
+					displayname = "Check-In Schedule Calendar"
+					icon = "ui-1-calendar-60"
+					report Checkin_Schedule_Calendar
+					{
+						icon = "ui-1-calendar-60"
+					}
+				}
+				section room_type_by_meal_plan_section
+				{
+					displayname = "Room Type By Meal Plan"
+					icon = "tech-desktop"
+					report RoomType_By_MealPlan_Pivot
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section guest_stay_summary_section
+				{
+					displayname = "Guest Stay Summary"
+					icon = "tech-desktop"
+					report Guest_Stay_Summary
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = solid
+					show = {space,section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 6
+			font = "rubik"
+			color options
+			{
+				color = "7"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = chryslerpurple
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
